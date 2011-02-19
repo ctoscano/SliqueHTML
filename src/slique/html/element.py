@@ -93,12 +93,9 @@ class element(list):
         
         Use the keyword 'flag' for attributes without a value
             
-            
         '''
-        for attr in attrs:
-            value = attrs[attr]
-            
-            self.attributes[attr] = value
+        for attr, value in attrs.items():
+            self.attributes[attr] = cgi.escape(unicode(value), quote=True)
         return self
     
     def get(self, attr):
